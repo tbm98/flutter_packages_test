@@ -12,9 +12,6 @@ void main() {
         Provider<Logger>(create: (_) => ConsoleLogger()),
         StateNotifierProvider<MyStateNotifier, MyState>(
           create: (_) => MyStateNotifier(),
-          builder: (context, child) {
-            return child;
-          },
         ),
       ],
       child: MyApp(),
