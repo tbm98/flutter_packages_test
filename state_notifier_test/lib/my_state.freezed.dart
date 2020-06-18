@@ -8,11 +8,15 @@ part of 'my_state.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
+MyState _$MyStateFromJson(Map<String, dynamic> json) {
+  return _MyState.fromJson(json);
+}
 
 class _$MyStateTearOff {
   const _$MyStateTearOff();
 
-  _MyState call(int a, int b, int c, int d, {String name}) {
+  _MyState call(@JsonKey(name: 'hihi') int a, int b, int c, int d,
+      {String name = 'TBM98'}) {
     return _MyState(
       a,
       b,
@@ -27,19 +31,21 @@ class _$MyStateTearOff {
 const $MyState = _$MyStateTearOff();
 
 mixin _$MyState {
+  @JsonKey(name: 'hihi')
   int get a;
   int get b;
   int get c;
   int get d;
   String get name;
 
+  Map<String, dynamic> toJson();
   $MyStateCopyWith<MyState> get copyWith;
 }
 
 abstract class $MyStateCopyWith<$Res> {
   factory $MyStateCopyWith(MyState value, $Res Function(MyState) then) =
       _$MyStateCopyWithImpl<$Res>;
-  $Res call({int a, int b, int c, int d, String name});
+  $Res call({@JsonKey(name: 'hihi') int a, int b, int c, int d, String name});
 }
 
 class _$MyStateCopyWithImpl<$Res> implements $MyStateCopyWith<$Res> {
@@ -71,7 +77,7 @@ abstract class _$MyStateCopyWith<$Res> implements $MyStateCopyWith<$Res> {
   factory _$MyStateCopyWith(_MyState value, $Res Function(_MyState) then) =
       __$MyStateCopyWithImpl<$Res>;
   @override
-  $Res call({int a, int b, int c, int d, String name});
+  $Res call({@JsonKey(name: 'hihi') int a, int b, int c, int d, String name});
 }
 
 class __$MyStateCopyWithImpl<$Res> extends _$MyStateCopyWithImpl<$Res>
@@ -100,15 +106,22 @@ class __$MyStateCopyWithImpl<$Res> extends _$MyStateCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable(explicitToJson: true)
 class _$_MyState extends _MyState {
-  const _$_MyState(this.a, this.b, this.c, this.d, {this.name})
+  const _$_MyState(@JsonKey(name: 'hihi') this.a, this.b, this.c, this.d,
+      {this.name = 'TBM98'})
       : assert(a != null),
         assert(b != null),
         assert(c != null),
         assert(d != null),
+        assert(name != null),
         super._();
 
+  factory _$_MyState.fromJson(Map<String, dynamic> json) =>
+      _$_$_MyStateFromJson(json);
+
   @override
+  @JsonKey(name: 'hihi')
   final int a;
   @override
   final int b;
@@ -116,6 +129,7 @@ class _$_MyState extends _MyState {
   final int c;
   @override
   final int d;
+  @JsonKey(defaultValue: 'TBM98')
   @override
   final String name;
 
@@ -152,14 +166,22 @@ class _$_MyState extends _MyState {
   @override
   _$MyStateCopyWith<_MyState> get copyWith =>
       __$MyStateCopyWithImpl<_MyState>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_MyStateToJson(this);
+  }
 }
 
 abstract class _MyState extends MyState {
   const _MyState._() : super._();
-  const factory _MyState(int a, int b, int c, int d, {String name}) =
-      _$_MyState;
+  const factory _MyState(@JsonKey(name: 'hihi') int a, int b, int c, int d,
+      {String name}) = _$_MyState;
+
+  factory _MyState.fromJson(Map<String, dynamic> json) = _$_MyState.fromJson;
 
   @override
+  @JsonKey(name: 'hihi')
   int get a;
   @override
   int get b;
