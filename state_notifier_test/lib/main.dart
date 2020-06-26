@@ -10,6 +10,9 @@ void main() {
     MultiProvider(
       providers: [
         Provider<Logger>(create: (_) => ConsoleLogger()),
+        Provider<Database>(
+          create: (_) => Database(),
+        ),
         StateNotifierProvider<MyStateNotifier, MyState>(
           create: (_) => MyStateNotifier(),
         ),

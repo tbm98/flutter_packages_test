@@ -12,6 +12,7 @@ class MyStateNotifier extends StateNotifier<MyState> with LocatorMixin {
 
   void increA() {
     state = state.copyWith(a: state.a + 1);
+    read<Database>().saveData(state);
   }
 
   void increB() {
@@ -33,6 +34,12 @@ class MyStateNotifier extends StateNotifier<MyState> with LocatorMixin {
       read<Logger>().countChanged(value.sumWithName);
     }
     super.state = value;
+  }
+}
+
+class Database {
+  void saveData(dynamic value) {
+    print('save data to database $value');
   }
 }
 
